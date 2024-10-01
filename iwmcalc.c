@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 #define   IWM_COPYRIGHT       "(C)2024 iwm-iwama"
 #define   IWM_FILENAME        "iwmcalc"
-#define   IWM_UPDATE          "20240930"
+#define   IWM_UPDATE          "20241001"
 //------------------------------------------------------------------------------
 #include "lib_iwmutil2.h"
 #include <mruby.h>
@@ -18,35 +18,27 @@ main()
 	// -h | --help
 	if(! $ARGC || iCLI_getOptMatch(0, L"-h", L"--help"))
 	{
-		MS *cmd = W2M($CMD);
-			P(
-				"\n"
-				IESC_OPT22
-				"\033[3G" "+  -  *  /  %%  **  Sqrt(NUM)\n"
-				"\033[3G" "Pi  Rad  Sin(NUM)  Cos(NUM)  Tan(NUM)\n"
-				"\033[3G" "E  Log(base, NUM)\n"
-				"\033[3G" "(mruby)Math module\n"
-				"\n"
-				"\033[3G"  IESC_LBL1 "(例１)"
-				"\033[10G" IESC_STR1 "%s 9 / 3 * (1+2)" IESC_OPT21 " => 9\n"
-				"\033[3G"  IESC_LBL1 "(例２)"
-				"\033[10G" IESC_STR1 "%s i1=3**2; i2=4; i1/i2" IESC_OPT21 " => 2.25\n"
-				"\033[3G"  IESC_LBL1 "(例３)"
-				"\033[10G" IESC_STR1 "%s Sin(30 * Rad)" IESC_OPT21 " => 0.5\n"
-				"\033[3G"  IESC_LBL1 "(例４)"
-				"\033[10G" IESC_STR1 "%s Log(2, 16)" IESC_OPT21 " => 4\n"
-				"\033[3G"  IESC_LBL1 "(例５)"
-				"\033[10G" IESC_STR1 "%s Math.log2(16)" IESC_OPT21 " => 4\n"
-				"\n"
-				IESC_RESET
-				,
-				cmd,
-				cmd,
-				cmd,
-				cmd,
-				cmd
-			);
-		ifree(cmd);
+		P1(
+			"\n"
+			IESC_OPT22
+			"\033[3G" "+  -  *  /  %%  **  Sqrt(NUM)\n"
+			"\033[3G" "Pi  Rad  Sin(NUM)  Cos(NUM)  Tan(NUM)\n"
+			"\033[3G" "E  Log(base, NUM)\n"
+			"\033[3G" "(mruby)Math module\n"
+			"\n"
+			"\033[3G"  IESC_LBL1 "(例１)"
+			"\033[10G" IESC_STR1 IWM_FILENAME " 9 / 3 * (1+2)" IESC_OPT21 " => 9\n"
+			"\033[3G"  IESC_LBL1 "(例２)"
+			"\033[10G" IESC_STR1 IWM_FILENAME " i1=3**2; i2=4; i1/i2" IESC_OPT21 " => 2.25\n"
+			"\033[3G"  IESC_LBL1 "(例３)"
+			"\033[10G" IESC_STR1 IWM_FILENAME " Sin(30 * Rad)" IESC_OPT21 " => 0.5\n"
+			"\033[3G"  IESC_LBL1 "(例４)"
+			"\033[10G" IESC_STR1 IWM_FILENAME " Log(2, 16)" IESC_OPT21 " => 4\n"
+			"\033[3G"  IESC_LBL1 "(例５)"
+			"\033[10G" IESC_STR1 IWM_FILENAME " Math.log2(16)" IESC_OPT21 " => 4\n"
+			"\n"
+			IESC_RESET
+		);
 		imain_end();
 	}
 
